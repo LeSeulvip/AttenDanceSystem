@@ -1,0 +1,1 @@
+set PATH=D:\MyDevelop\runtimes\nginx-1.14.2;%PATH%
