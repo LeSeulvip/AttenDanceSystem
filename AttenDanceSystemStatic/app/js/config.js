@@ -2,7 +2,7 @@
   //基本配置
   win.MyAppConfig = {
     name: 'myapp',
-    title: 'huhuiyu-ng-app',
+    title: 'leseul-ng-app',
     services: 'services',
     controllers: 'controllers',
     directives: 'directives',
