@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.leseul.attendancesystem.dao.TbDeptDAO">
+    
+  <select id="queryAll" resultType="TbDept">
+    select id,dname,info,tel from TbDept
+  </select>
+  
+  <select id="queryAll_COUNT" resultType="int">
+    select count(*) from TbDept
+  </select>
+  
+  <select id="queryByKey" parameterType="TbDept" resultType="TbDept">
+    select id,dname,info,tel from TbDept 
+    where id=#{id}
+  </select>
+  
+  <insert id="add" parameterType="TbDept">
+    insert into TbDept(dname,info,tel)
+    values(#{dname},#{info},#{tel})
+  </insert>
+  
+  <update id="update" parameterType="TbDept">
+    update TbDept set dname=#{dname},info=#{info},tel=#{tel}
+    where id=#{id}
+  </update>
+  
+  <delete id="delete" parameterType="TbDept" >
+    delete from TbDept
+    where id=#{id}
+  </delete>
+  
+</mapper>

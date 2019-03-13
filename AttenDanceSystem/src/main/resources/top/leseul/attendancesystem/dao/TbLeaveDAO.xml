@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.leseul.attendancesystem.dao.TbLeaveDAO">
+    
+  <select id="queryAll" resultType="TbLeave">
+    select id,bname,bdate,edate,info from TbLeave
+  </select>
+  
+  <select id="queryAll_COUNT" resultType="int">
+    select count(*) from TbLeave
+  </select>
+  
+  <select id="queryByKey" parameterType="TbLeave" resultType="TbLeave">
+    select id,bname,bdate,edate,info from TbLeave 
+    where id=#{id}
+  </select>
+  
+  <insert id="add" parameterType="TbLeave">
+    insert into TbLeave(bname,bdate,edate,info)
+    values(#{bname},#{bdate},#{edate},#{info})
+  </insert>
+  
+  <update id="update" parameterType="TbLeave">
+    update TbLeave set bname=#{bname},bdate=#{bdate},edate=#{edate},info=#{info}
+    where id=#{id}
+  </update>
+  
+  <delete id="delete" parameterType="TbLeave" >
+    delete from TbLeave
+    where id=#{id}
+  </delete>
+  
+</mapper>

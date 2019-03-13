@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.leseul.attendancesystem.dao.TbAttendanceDAO">
+    
+  <select id="queryAll" resultType="TbAttendance">
+    select id,aname,bmonth,holiday,absenteeism,late,early,note,adate from TbAttendance
+  </select>
+  
+  <select id="queryAll_COUNT" resultType="int">
+    select count(*) from TbAttendance
+  </select>
+  
+  <select id="queryByKey" parameterType="TbAttendance" resultType="TbAttendance">
+    select id,aname,bmonth,holiday,absenteeism,late,early,note,adate from TbAttendance 
+    where id=#{id}
+  </select>
+  
+  <insert id="add" parameterType="TbAttendance">
+    insert into TbAttendance(aname,bmonth,holiday,absenteeism,late,early,note,adate)
+    values(#{aname},#{bmonth},#{holiday},#{absenteeism},#{late},#{early},#{note},#{adate})
+  </insert>
+  
+  <update id="update" parameterType="TbAttendance">
+    update TbAttendance set aname=#{aname},bmonth=#{bmonth},holiday=#{holiday},absenteeism=#{absenteeism},late=#{late},early=#{early},note=#{note},adate=#{adate}
+    where id=#{id}
+  </update>
+  
+  <delete id="delete" parameterType="TbAttendance" >
+    delete from TbAttendance
+    where id=#{id}
+  </delete>
+  
+</mapper>

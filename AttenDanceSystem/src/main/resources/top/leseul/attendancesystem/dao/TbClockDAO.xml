@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.leseul.attendancesystem.dao.TbClockDAO">
+    
+  <select id="queryAll" resultType="TbClock">
+    select id,cname,sdate,edate from TbClock
+  </select>
+  
+  <select id="queryAll_COUNT" resultType="int">
+    select count(*) from TbClock
+  </select>
+  
+  <select id="queryByKey" parameterType="TbClock" resultType="TbClock">
+    select id,cname,sdate,edate from TbClock 
+    where id=#{id}
+  </select>
+  
+  <insert id="add" parameterType="TbClock">
+    insert into TbClock(cname,sdate,edate)
+    values(#{cname},#{sdate},#{edate})
+  </insert>
+  
+  <update id="update" parameterType="TbClock">
+    update TbClock set cname=#{cname},sdate=#{sdate},edate=#{edate}
+    where id=#{id}
+  </update>
+  
+  <delete id="delete" parameterType="TbClock" >
+    delete from TbClock
+    where id=#{id}
+  </delete>
+  
+</mapper>
