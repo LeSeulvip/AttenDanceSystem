@@ -17,5 +17,9 @@
       $scope.data = MyUtilService.trustAsHtml(MyUtilService.formatJson(data, true));
       $log.debug(ToolService.getServerToken());
     });
+
+    
+
+
   }
 })();
