@@ -1,0 +1,9 @@
+.body {
+  color: white;
+}
+
+/* 压力布局 */
+.body .btns {
+  display: flex;
+  justify-content: flex-end;
+}

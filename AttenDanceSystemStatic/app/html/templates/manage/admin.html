@@ -1,0 +1,18 @@
+<div class="body" ng-controller="AdminCtrl">
+
+  <div class="btns">
+    <span class="btn btn-primary" ng-click="logout();">登出</span>
+  </div>
+
+
+  <ul class="nav nav-tabs" role="tablist">
+    <li ng-repeat="m in menus" role="presentation" ng-class="{true:'active'}[m.page==selectMenu.page]">
+      <a href="javascript:void(0);" ng-click="changeMenu(m)">{{m.text}}</a>
+    </li>
+  </ul>
+
+  <div class="include">
+    <div ng-include="inc"></div>
+  </div>
+
+</div>

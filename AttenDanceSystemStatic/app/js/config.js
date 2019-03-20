@@ -2,7 +2,7 @@
   //基本配置
   win.MyAppConfig = {
     name: 'myapp',
-    title: 'leseul-ng-app',
+    title: 'AttenDanceSystem',
     services: 'services',
     controllers: 'controllers',
     directives: 'directives',

@@ -8,15 +8,26 @@
 
       <div class="panel-body">
         <div class="form-group">
-          <input class="form-control" type="text" placeholder="请输入用户名">
-          <input class="form-control" type="password" placeholder="请输入密码">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="iconfont">&#xe600;</i>
+            </span>
+            <input class="form-control" ng-model="user.username" type="text" placeholder="请输入用户名">
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="iconfont">&#xe603;</i>
+            </span>
+            <input class="form-control" ng-model="user.password" type="password" placeholder="请输入密码">
+          </div>
+
         </div>
       </div>
 
       <div class="panel-footer">
         <div class="text-center">
-          <button class="btn btn-parimary">登录</button>
-          <button class="btn btn-danger">重填</button>
+          <button class="btn btn-parimary" ng-click="login();"> <i class="iconfont">&#xe622;</i> 登录</button>
+          <button class="btn btn-danger" ng-click="cancel();"> <i class="iconfont">&#xe610;</i> 重填</button>
         </div>
       </div>
 

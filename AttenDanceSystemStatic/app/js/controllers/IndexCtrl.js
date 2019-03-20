@@ -1,8 +1,8 @@
 (function() {
   var ctrls = angular.module(MyAppConfig.controllers);
-  ctrls.controller('IndexCtrl', ['$scope', '$log', 'MyDataService', 'DialogService', 'MyUtilService', 'ToolService', IndexCtrl]);
+  ctrls.controller('IndexCtrl', ['$scope', '$log', 'MyDataService', '$location', 'DialogService', 'MyUtilService', 'ToolService', IndexCtrl]);
 
-  function IndexCtrl($scope, $log, MyDataService, DialogService, MyUtilService, ToolService) {
+  function IndexCtrl($scope, $log, MyDataService, $location, DialogService, MyUtilService, ToolService) {
     $log.debug('IndexCtrl init...');
 
     // 处理scope销毁
@@ -18,8 +18,21 @@
       $log.debug(ToolService.getServerToken());
     });
 
-    
+    $scope.user = {};
 
+    // 登录
+    // $scope.user = { username: 'admin', password: '123456' };
+    $scope.login = function() {
+      if ($scope.user.username != 'admin' || $scope.user.password != '123456') {
+        DialogService.showAlert('用户名或者密码错误');
+      } else {
+        location = '/#!/route/page/manage/admin';
+      }
+    };
 
+    //重填
+    $scope.cancel = function() {
+      $scope.user = {};
+    };
   }
 })();
