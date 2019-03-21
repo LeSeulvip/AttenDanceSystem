@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+
+import top.huhuiyu.api.utils.StringUtils;
 import top.huhuiyu.api.utils.mybase.JsonMessage;
 import top.huhuiyu.api.utils.mybase.PageBean;
 import top.leseul.attendancesystem.dao.TbAttendanceDAO;
@@ -45,6 +47,29 @@ public class TbAttendanceServiceImpl implements TbAttendanceService {
 
   @Override
   public JsonMessage add(TbAttendanceModel model) throws Exception {
+    TbAttendance attendance = model.getTbAttendance();
+    if (StringUtils.isEmpty(attendance.getAname())) {
+      return JsonMessage.getFail("姓名不能为空");
+    }
+    if (StringUtils.isEmpty(attendance.getBmonth())) {
+      return JsonMessage.getFail("月份不能为空");
+    }
+    if (StringUtils.isEmpty(attendance.getAbsenteeism())) {
+      return JsonMessage.getFail("假期不能为空");
+    }
+    if (StringUtils.isEmpty(attendance.getAbsenteeism())) {
+      return JsonMessage.getFail("旷工不能为空");
+    }
+    if (StringUtils.isEmpty(attendance.getLate())) {
+      return JsonMessage.getFail("迟到不能为空");
+    }
+    if (StringUtils.isEmpty(attendance.getEarly())) {
+      return JsonMessage.getFail("早退不能为空");
+    }
+    if (StringUtils.isEmpty(attendance.getNote())) {
+      return JsonMessage.getFail("备注不能为空");
+    }
+
     int result = tbAttendanceDAO.add(model.getTbAttendance());
     return result == 1 ? JsonMessage.getSuccess("添加数据成功") : JsonMessage.getFail("添加数据失败");
   }
