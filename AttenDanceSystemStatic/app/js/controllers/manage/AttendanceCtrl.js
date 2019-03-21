@@ -51,7 +51,7 @@
           DialogService.hideWait();
           DialogService.showAlert(data.message, function() {
             if (data.success) {
-
+              $scope.query();
               DialogService.hideCustom();
             }
           });

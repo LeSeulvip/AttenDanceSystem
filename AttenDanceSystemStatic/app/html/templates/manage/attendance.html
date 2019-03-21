@@ -1,20 +1,6 @@
-<div ng-controller="AttendanceCtrl" style="background-color:rgba(0, 0, 0 , 0.6)">
-
-  这是考勤管理
-
-  <div class="text-right">
-    <span class="btn btn-danger btn-sm" ng-click="query()">查询</span>
-    <span class="btn btn-danger btn-sm" ng-click="toAdd()">添加</span>
-    <!-- <select name="" id="">
-      <option value="">姓名</option>
-      <option value="">月份</option>
-      <option value="">假期</option>
-      <option value="">旷工</option>
-      <option value="">迟到</option>
-      <option value="">早退</option>
-      <option value="">备注</option>    
-    </select> -->
-    <div style="display: flex;">
+<div ng-controller="AttendanceCtrl">
+  <div>
+    <div class="div-main">
       <input type="text" ng-model="formdata.aname" class="form-control" placeholder="姓名">
       <input type="text" ng-model="formdata.bmonth" class="form-control" placeholder="月份 ">
       <input type="text" ng-model="formdata.holiday" class="form-control" placeholder="假期 ">
@@ -22,6 +8,8 @@
       <input type="text" ng-model="formdata.late" class="form-control" placeholder="迟到">
       <input type="text" ng-model="formdata.early" class="form-control" placeholder="早退">
       <input type="text" ng-model="formdata.note" class="form-control" placeholder="备注">
+      <span class="btn btn-danger btn-sm" ng-click="query()">查询</span>
+      <span class="btn btn-danger btn-sm" ng-click="toAdd()">添加</span>
     </div>
 
 
@@ -39,8 +27,7 @@
           <td>操作</td>
         </tr>
       </thead>
-      <tr ng-repeat="d in list" >
-        <!-- <td><span ng-bind="$index+1"></span></td> -->
+      <tr ng-repeat="d in list">
         <td><span ng-bind="d.id"></span></td>
         <td><span ng-bind="d.aname"></span></td>
         <td><span ng-bind="d.bmonth"></span></td>
@@ -54,8 +41,6 @@
         </td>
       </tr>
     </table>
-
-
 
   </div>
 </div>

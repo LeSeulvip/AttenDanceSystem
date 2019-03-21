@@ -1,0 +1,9 @@
+body {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.div-main {
+  display: flex;
+  padding-top: 1rem;
+  text-align: center;
+}
