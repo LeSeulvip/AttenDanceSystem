@@ -1,3 +1,61 @@
-<div>
+<div ng-controller="AttendanceCtrl" style="background-color:rgba(0, 0, 0 , 0.6)">
+
   这是考勤管理
+
+  <div class="text-right">
+    <span class="btn btn-danger btn-sm" ng-click="query()">查询</span>
+    <span class="btn btn-danger btn-sm" ng-click="toAdd()">添加</span>
+    <!-- <select name="" id="">
+      <option value="">姓名</option>
+      <option value="">月份</option>
+      <option value="">假期</option>
+      <option value="">旷工</option>
+      <option value="">迟到</option>
+      <option value="">早退</option>
+      <option value="">备注</option>    
+    </select> -->
+    <div style="display: flex;">
+      <input type="text" ng-model="formdata.aname" class="form-control" placeholder="姓名">
+      <input type="text" ng-model="formdata.bmonth" class="form-control" placeholder="月份 ">
+      <input type="text" ng-model="formdata.holiday" class="form-control" placeholder="假期 ">
+      <input type="text" ng-model="formdata.absenteeism" class="form-control" placeholder="旷工">
+      <input type="text" ng-model="formdata.late" class="form-control" placeholder="迟到">
+      <input type="text" ng-model="formdata.early" class="form-control" placeholder="早退">
+      <input type="text" ng-model="formdata.note" class="form-control" placeholder="备注">
+    </div>
+
+
+    <table class="table">
+      <thead>
+        <tr class="bg-primary">
+          <td>编号</td>
+          <td>姓名</td>
+          <td>月份</td>
+          <td>假期</td>
+          <td>旷工</td>
+          <td>迟到</td>
+          <td>早退</td>
+          <td>备注</td>
+          <td>操作</td>
+        </tr>
+      </thead>
+      <tr ng-repeat="d in list" >
+        <!-- <td><span ng-bind="$index+1"></span></td> -->
+        <td><span ng-bind="d.id"></span></td>
+        <td><span ng-bind="d.aname"></span></td>
+        <td><span ng-bind="d.bmonth"></span></td>
+        <td><span ng-bind="d.holiday"></span></td>
+        <td><span ng-bind="d.absenteeism"></span></td>
+        <td><span ng-bind="d.late"></span></td>
+        <td><span ng-bind="d.early"></span></td>
+        <td><span ng-bind="d.note"></span></td>
+        <td>
+          <span class="btn btn-danger btn-sm" ng-click="toUpdate(d)">修改</span>
+        </td>
+      </tr>
+    </table>
+
+
+
+  </div>
 </div>
