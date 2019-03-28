@@ -24,7 +24,6 @@
           <td>迟到</td>
           <td>早退</td>
           <td>备注</td>
-          <td>操作</td>
         </tr>
       </thead>
       <tr ng-repeat="d in list">
@@ -36,9 +35,6 @@
         <td><span ng-bind="d.late"></span></td>
         <td><span ng-bind="d.early"></span></td>
         <td><span ng-bind="d.note"></span></td>
-        <td>
-          <span class="btn btn-danger btn-sm" ng-click="toUpdate(d)">修改</span>
-        </td>
       </tr>
     </table>
 

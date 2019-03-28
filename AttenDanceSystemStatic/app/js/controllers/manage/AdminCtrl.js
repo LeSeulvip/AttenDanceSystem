@@ -29,10 +29,22 @@
 
     $scope.changeMenu($scope.menus[0]);
 
-    //登出
+    $scope.queryUser = function() {
+      MyDataService.send('/TbAdmin/getUserInfo', {}, function(data) {
+        $scope.tbAdmin = data.datas.user;
+      });
+    };
+
+    $scope.queryUser();
+
     $scope.logout = function() {
-      DialogService.showAlert('退出成功', function() {
-        location = '/#!/route/page/index';
+      DialogService.showWait('安全退出中，请稍后...');
+      MyDataService.send('/TbAdmin/logout', {}, function(data) {
+        DialogService.hideWait();
+        DialogService.showAlert(data.message, function() {
+          //不推荐使用原始方式跳转
+          location = '/#!/route/page/manage/index';
+        });
       });
     };
   }

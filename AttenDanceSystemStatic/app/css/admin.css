@@ -7,3 +7,6 @@
   display: flex;
   justify-content: flex-end;
 }
+.userinfo{
+  padding: 1rem;
+}

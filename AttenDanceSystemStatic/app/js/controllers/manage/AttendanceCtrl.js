@@ -10,13 +10,6 @@
       $log.debug('AttendanceCtrl destroy...');
     });
 
-    // DialogService.showWait('获取后台数据中...');
-    // MyMyDataService.send('/', {}, function(data) {
-    //   DialogService.hideWait();
-    //   $log.debug(data);
-    //   $scope.data = MyUtilService.trustAsHtml(MyUtilService.formatJson(data, true));
-    //   $log.debug(ToolService.getServerToken());
-    // });
     $scope.page = {};
     //查询
     $scope.query = function() {

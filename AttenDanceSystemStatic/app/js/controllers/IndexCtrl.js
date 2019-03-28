@@ -1,8 +1,8 @@
 (function() {
   var ctrls = angular.module(MyAppConfig.controllers);
-  ctrls.controller('IndexCtrl', ['$scope', '$log', 'MyDataService', '$location', 'DialogService', 'MyUtilService', 'ToolService', IndexCtrl]);
+  ctrls.controller('IndexCtrl', ['$scope', '$log', '$timeout', 'MyDataService', '$location', 'DialogService', 'MyUtilService', 'ToolService', IndexCtrl]);
 
-  function IndexCtrl($scope, $log, MyDataService, $location, DialogService, MyUtilService, ToolService) {
+  function IndexCtrl($scope, $log, $timeout, MyDataService, $location, DialogService, MyUtilService, ToolService) {
     $log.debug('IndexCtrl init...');
 
     // 处理scope销毁
@@ -10,24 +10,29 @@
       $log.debug('IndexCtrl destroy...');
     });
 
-    DialogService.showWait('获取后台数据中...');
-    MyDataService.send('/', {}, function(data) {
-      DialogService.hideWait();
-      $log.debug(data);
-      $scope.data = MyUtilService.trustAsHtml(MyUtilService.formatJson(data, true));
-      $log.debug(ToolService.getServerToken());
-    });
+    $scope.tbAdmin = {
+      userName: 'admin',
+      userPwd: 'admin-pwd'
+    };
 
-    $scope.user = {};
-
-    // 登录
-    // $scope.user = { username: 'admin', password: '123456' };
     $scope.login = function() {
-      if ($scope.user.username != 'admin' || $scope.user.password != '123456') {
-        DialogService.showAlert('用户名或者密码错误');
-      } else {
-        location = '/#!/route/page/manage/admin';
-      }
+      DialogService.showWait('登录中，请稍后....');
+      MyDataService.send(
+        '/TbAdmin/login',
+        {
+          tbAdmin: $scope.tbAdmin
+        },
+        function(data) {
+          DialogService.hideWait();
+          DialogService.showAlert(data.message, function() {
+            if (data.success) {
+              $timeout(function() {
+                $location.path('/route/page/manage/admin');
+              }, 1);
+            }
+          });
+        }
+      );
     };
 
     //重填
