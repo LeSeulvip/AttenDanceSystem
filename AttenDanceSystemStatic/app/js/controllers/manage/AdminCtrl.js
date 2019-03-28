@@ -27,7 +27,7 @@
       $scope.inc = basePath + $scope.selectMenu.page + '.html';
     };
 
-    $scope.changeMenu($scope.menus[0]);
+    $scope.changeMenu($scope.menus[1]);
 
     $scope.queryUser = function() {
       MyDataService.send('/TbAdmin/getUserInfo', {}, function(data) {

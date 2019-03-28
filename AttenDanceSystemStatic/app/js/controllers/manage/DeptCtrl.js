@@ -12,6 +12,7 @@
 
 
     $scope.page = {};
+
     //查询
     $scope.query = function() {
       DialogService.showWait('数据查询中，请稍后。。。。。');
@@ -39,7 +40,7 @@
       MyDataService.send(
         '/TbDept/add',
         {
-          TbAttendance: $scope.formdata
+          TbDept: $scope.formdata
         },
         function(data) {
           DialogService.hideWait();
