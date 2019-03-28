@@ -9,15 +9,17 @@
   <!-- 查询用户登录相关信息 -->
   <select id="queryTokenUser" parameterType="TbTokenInfo" resultType="TbAdmin">
     select aid,userName,userPwd,name,tel,inductionInfo,permissions,dept from TbAdmin
-    where auid=(select info from TbTokenInfo where token=#{token} and infokey='admin-user')
+    where aid=(select info from TbTokenInfo where token=#{token} and infokey='admin-user')
   </select>
+
 
   <select id="queryAll" resultType="TbAdmin">
     select aid,userName,userPwd,name,tel,inductionInfo,permissions,dept from TbAdmin
   </select>
 
-  <select id="queryAll_COUNT" resultType="int">
-    select count(*) from TbAdmin
+  <select id="queryByUsername" parameterType="TbAdmin" resultType="TbAdmin">
+    select aid,userName,userPwd,name,tel,inductionInfo,permissions,dept from TbAdmin
+    where userName=#{userName}
   </select>
 
   <select id="queryByKey" parameterType="TbAdmin" resultType="TbAdmin">
@@ -25,19 +27,16 @@
     where aid=#{aid}
   </select>
 
-  <insert id="add" parameterType="TbAdmin">
-    insert into TbAdmin(userName,userPwd,name,tel,inductionInfo,permissions,dept)
-    values(#{userName},#{userPwd},#{name},#{tel},#{inductionInfo},#{permissions},#{dept})
+  <insert id="saveUserToToken" parameterType="TbTokenInfo">
+    insert into TbTokenInfo(token,infokey,info) values(#{token},'admin-user',#{info})
   </insert>
 
-  <update id="update" parameterType="TbAdmin">
-    update TbAdmin set userName=#{userName},userPwd=#{userPwd},name=#{name},tel=#{tel},inductionInfo=#{inductionInfo},permissions=#{permissions},dept=#{dept}
-    where aid=#{aid}
+  <update id="updateTokenUser" parameterType="TbTokenInfo">
+    update TbTokenInfo set info=#{info},lastupdate=now()
+    where token=#{token} and infokey='admin-user'
   </update>
 
-  <delete id="delete" parameterType="TbAdmin">
-    delete from TbAdmin
-    where aid=#{aid}
+  <delete id="deleteTokenUser" parameterType="TbTokenInfo">
+    delete from TbTokenInfo where token=#{token} and infokey='admin-user'
   </delete>
-
 </mapper>

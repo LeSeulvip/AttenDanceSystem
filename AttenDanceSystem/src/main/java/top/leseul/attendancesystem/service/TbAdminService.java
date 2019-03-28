@@ -12,48 +12,28 @@ import top.leseul.attendancesystem.model.TbAdminModel;
 public interface TbAdminService {
 
   /**
-   * 修改TbAdmin信息
-   * 
-   * @param model 页面提交数据
-   * @return 修改TbAdmin信息的结果
-   * @throws Exception 处理发生错误
+   * 登出
+   * @param model
+   * @return
+   * @throws Exception
    */
-  JsonMessage update(TbAdminModel model) throws Exception;
+  JsonMessage logout(TbAdminModel model) throws Exception;
 
   /**
-   * 删除TbAdmin信息
-   * 
-   * @param model 页面提交数据
-   * @return 删除TbAdmin信息的结果
-   * @throws Exception 处理发生错误
+   * 获取用户信息
+   * @param model
+   * @return
+   * @throws Exception
    */
-  JsonMessage delete(TbAdminModel model) throws Exception;
+  JsonMessage getUserInfo(TbAdminModel model) throws Exception;
 
   /**
-   * 添加TbAdmin信息
-   * 
-   * @param model 页面提交数据
-   * @return 添加TbAdmin信息的结果
-   * @throws Exception 处理发生错误
+   * 登录
+   * @param model
+   * @return
+   * @throws Exception
    */
-  JsonMessage add(TbAdminModel model) throws Exception;
+  JsonMessage login(TbAdminModel model) throws Exception;
 
-  /**
-   * 按照主键查询TbAdmin信息
-   * 
-   * @param model 页面提交数据
-   * @return 主键查询TbAdmin信息的结果
-   * @throws Exception 处理发生错误
-   */
-  JsonMessage queryByKey(TbAdminModel model) throws Exception;
-
-  /**
-   * 分页查询TbAdmin信息
-   * 
-   * @param model 页面提交数据
-   * @return 分页查询TbAdmin信息的结果
-   * @throws Exception 处理发生错误
-   */
-  JsonMessage queryAll(TbAdminModel model) throws Exception;
 
 }

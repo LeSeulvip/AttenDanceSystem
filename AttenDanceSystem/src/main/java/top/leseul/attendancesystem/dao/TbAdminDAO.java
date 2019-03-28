@@ -1,8 +1,9 @@
 package top.leseul.attendancesystem.dao;
 
-import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
+
 import top.leseul.attendancesystem.entity.TbAdmin;
+import top.leseul.attendancesystem.entity.TbTokenInfo;
 
 /**
  * TbAdmin表的dao
@@ -12,13 +13,14 @@ import top.leseul.attendancesystem.entity.TbAdmin;
  */
 @Mapper
 public interface TbAdminDAO {
+  
   /**
-   * 查询全部TbAdmin
-   *
-   * @return TbAdmin的信息
-   * @throws Exception 处理发生异常
+   * 按用户名查询
+   * @param user
+   * @return
+   * @throws Exception
    */
-  List<TbAdmin> queryAll() throws Exception;
+  TbAdmin queryByUsername(TbAdmin user) throws Exception;
   
   /**
    * 按照主键查询TbAdmin
@@ -30,30 +32,38 @@ public interface TbAdminDAO {
   TbAdmin queryByKey(TbAdmin tbAdmin) throws Exception;
   
   /**
-   * 添加TbAdmin信息
-   *
-   * @param tbAdmin信息
-   * @return 添加tbAdmin信息的结果
-   * @throws Exception 处理发生异常
+   * 查询用户登录相关信息
+   * @param tokenInfo 用户登录信息
+   * @return 查询用户登录相关信息的结果
+   * @throws Exception处理发生异常
    */
-  int add(TbAdmin tbAdmin) throws Exception;
+  TbAdmin queryTokenUser(TbTokenInfo tokenInfo) throws Exception;
   
   /**
-   * 修改TbAdmin信息
-   *
-   * @param tbAdmin信息
-   * @return 修改tbAdmin信息的结果
+   * -添加登录用户信息
+   * 
+   * @param tokenInfo 用户信息
+   * @return 添加登录用户信息的结果
    * @throws Exception 处理发生异常
    */
-  int update(TbAdmin tbAdmin) throws Exception;
-  
+  int saveUserToToken(TbTokenInfo tokenInfo) throws Exception;
+
   /**
-   * 删除TbAdmin信息
-   *
-   * @param tbAdmin信息
-   * @return 删除tbAdmin信息的结果
+   * -修改登录用户信息
+   * 
+   * @param tokenInfo 用户信息
+   * @return 修改登录用户信息的结果
    * @throws Exception 处理发生异常
    */
-  int delete(TbAdmin tbAdmin) throws Exception;
+  int updateTokenUser(TbTokenInfo tokenInfo) throws Exception;
+
+  /**
+   * -移除登录用户信息
+   * 
+   * @param tokenInfo 用户信息
+   * @return 移除登录用户信息的结果
+   * @throws Exception 处理发生异常
+   */
+  int deleteTokenUser(TbTokenInfo tokenInfo) throws Exception;
 
 }
