@@ -1,7 +1,6 @@
-/*index页面的css*/
-.bg {
-  background-image: url(../images/bg.png);
+.bg01 {
   min-height: 100vh;
+  background-image: url(../images/bg01.jpg);
   background-size: cover;
 }
 

@@ -1,4 +1,4 @@
-<div ng-controller="DeptCtrl">
+<div class="bg" ng-controller="DeptCtrl">
     <div>
       <div class="div-main">
         <input type="text" ng-model="formdata.dname" class="form-control" placeholder="部门名称">
@@ -6,7 +6,6 @@
         <input type="text" ng-model="formdata.tel" class="form-control" placeholder="部门电话">
         <span class="btn btn-danger btn-sm" ng-click="query()">查询</span>
         <span class="btn btn-danger btn-sm" ng-click="toAdd()">添加</span>
-        <span class="btn btn-danger btn-sm" ng-click="toUpdate()">修改</span>
       </div>
   
   
@@ -17,7 +16,7 @@
             <td>部门名称</td>
             <td>部门描述</td>
             <td>部门电话</td>
-            <td>备注</td>
+            <td>操作</td>
           </tr>
         </thead>
         <tr ng-repeat="d in list">
@@ -25,7 +24,7 @@
           <td><span ng-bind="d.dname"></span></td>
           <td><span ng-bind="d.info"></span></td>
           <td><span ng-bind="d.tel"></span></td>
-          <td><span class="btn btn-danger btn-sm">操作</span></td>
+          <td><span class="btn btn-danger btn-sm" ng-click="toDelete(d)">删除</span></td>
         </tr>
       </table>
   

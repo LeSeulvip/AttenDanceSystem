@@ -10,7 +10,6 @@
       $log.debug('DeptCtrl destroy...');
     });
 
-
     $scope.page = {};
 
     //查询
@@ -48,6 +47,25 @@
             if (data.success) {
               $scope.query();
               DialogService.hideCustom();
+            }
+          });
+        }
+      );
+    };
+
+    $scope.toDelete = function(dept) {
+      DialogService.showWait('删除数据中，请稍后......');
+      MyDataService.send(
+        '/TbDept/delete',
+        {
+          tbDept: dept
+        },
+        function(data) {
+          DialogService.hideWait();
+          DialogService.showAlert(data.message, function() {
+            if (data.success) {
+              $scope.query();
+              // DialogService.hideCustom();
             }
           });
         }

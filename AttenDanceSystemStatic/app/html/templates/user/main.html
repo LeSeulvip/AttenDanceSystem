@@ -1,4 +1,4 @@
-<div class="body bg" ng-controller="AdminCtrl">
+<div class="body bg01" ng-controller="MainCtrl">
 
   <div class="btns">
     <div class="userinfo">
@@ -16,7 +16,7 @@
   </ul>
 
   <div class="include">
-    <div ng-include="inc"></div>
+    <div ng-if="inc" ng-include="inc"></div>
   </div>
 
 </div>

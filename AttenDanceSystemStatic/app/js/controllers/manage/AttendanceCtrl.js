@@ -51,5 +51,26 @@
         }
       );
     };
+
+    //删除
+    $scope.toDelete = function(tbAttendance) {
+      $log.debug(tbAttendance);
+      DialogService.showWait('删除数据中，请稍后......');
+      MyDataService.send(
+        '/TbAttendance/delete',
+        {
+          tbAttendance: tbAttendance
+        },
+        function(data) {
+          DialogService.hideWait();
+          DialogService.showAlert(data.message, function() {
+            if (data.success) {
+              $scope.query();
+              // DialogService.hideCustom();
+            }
+          });
+        }
+      );
+    };
   }
 })();
