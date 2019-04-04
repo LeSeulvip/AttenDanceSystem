@@ -53,7 +53,7 @@ public class TbAdminServiceImpl implements TbAdminService {
       tbAdminDAO.deleteTokenUser(tokenInfo);
     }
     tbAdminDAO.saveUserToToken(tokenInfo);
-    return JsonMessage.getSuccess("登录成功");
+    return JsonMessage.getSuccess("登录成功").putData("user", suser);
   }
 
   @Override
