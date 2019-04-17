@@ -2,6 +2,7 @@
   min-height: 100vh;
   background-image: url(../images/bg01.jpg);
   background-size: cover;
+  color: black
 }
 
 .index {

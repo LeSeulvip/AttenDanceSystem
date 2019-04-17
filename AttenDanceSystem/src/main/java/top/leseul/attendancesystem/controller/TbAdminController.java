@@ -22,18 +22,43 @@ public class TbAdminController {
   private TbAdminService tbAdminService;
 
   @RequestMapping("/login")
-  public JsonMessage queryAll(TbAdminModel model) throws Exception {
+  public JsonMessage login(TbAdminModel model) throws Exception {
     return tbAdminService.login(model);
   }
 
   @RequestMapping("/logout")
-  public JsonMessage add(TbAdminModel model) throws Exception {
+  public JsonMessage logout(TbAdminModel model) throws Exception {
     return tbAdminService.logout(model);
   }
   
   @RequestMapping("/getUserInfo")
   public JsonMessage getUserInfo(TbAdminModel model) throws Exception {
     return tbAdminService.getUserInfo(model);
+  }
+  
+  @RequestMapping("/queryAll")
+  public JsonMessage queryAll(TbAdminModel model) throws Exception {
+    return tbAdminService.queryAll(model);
+  }
+
+  @RequestMapping("/add")
+  public JsonMessage add(TbAdminModel model) throws Exception {
+    return tbAdminService.add(model);
+  }
+
+  @RequestMapping("/update")
+  public JsonMessage update(TbAdminModel model) throws Exception {
+    return tbAdminService.update(model);
+  }
+
+  @RequestMapping("/delete")
+  public JsonMessage delete(TbAdminModel model) throws Exception {
+    return tbAdminService.delete(model);
+  }
+
+  @RequestMapping("/queryByKey")
+  public JsonMessage queryByKey(TbAdminModel model) throws Exception {
+    return tbAdminService.queryByKey(model);
   }
 
 }

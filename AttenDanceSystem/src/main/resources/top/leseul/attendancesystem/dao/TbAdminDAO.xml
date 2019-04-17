@@ -39,4 +39,24 @@
   <delete id="deleteTokenUser" parameterType="TbTokenInfo">
     delete from TbTokenInfo where token=#{token} and infokey='admin-user'
   </delete>
+  <!--token相关 -->
+
+  <select id="queryAll_COUNT" resultType="int">
+    select count(*) from TbAdmin
+  </select>
+
+  <insert id="add" parameterType="TbAdmin">
+    insert into TbAdmin(userName,userPwd,name,tel,inductionInfo,permissions,dept)
+    values(#{userName},#{userPwd},#{name},#{tel},#{inductionInfo},#{permissions},#{dept})
+  </insert>
+
+  <update id="update" parameterType="TbAdmin">
+    update TbAdmin set userName=#{userName},userPwd=#{userPwd},name=#{name},tel=#{tel},inductionInfo=#{inductionInfo},permissions=#{permissions},dept=#{dept}
+    where aid=#{aid}
+  </update>
+
+  <delete id="delete" parameterType="TbAdmin">
+    delete from TbAdmin
+    where aid=#{aid}
+  </delete>
 </mapper>

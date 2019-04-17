@@ -11,7 +11,7 @@
     });
 
     // 页签切换
-    $scope.menus = [{ text: '个人考勤管理', page: 'userattendance' }, { text: '打卡管理', page: 'userclock' }, { text: '部门管理', page: 'userdept' }];
+    $scope.menus = [{ text: '个人信息', page: 'userinfo' }, { text: '考勤信息', page: 'userclock' }];
 
     var basePath = 'templates/user/';
     $scope.changeMenu = function(m) {
@@ -34,8 +34,9 @@
       MyDataService.send('/TbAdmin/logout', {}, function(data) {
         DialogService.hideWait();
         DialogService.showAlert(data.message, function() {
-          //不推荐使用原始方式跳转
-          location = '/#!/route/page/manage/index';
+          if (data.success) {
+            location = '#!/route/page/index';
+          }
         });
       });
     };

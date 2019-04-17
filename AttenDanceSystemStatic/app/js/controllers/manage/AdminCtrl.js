@@ -42,8 +42,9 @@
       MyDataService.send('/TbAdmin/logout', {}, function(data) {
         DialogService.hideWait();
         DialogService.showAlert(data.message, function() {
-          //不推荐使用原始方式跳转
-          location = '/#!/route/page/manage/index';
+          if (data.success) {
+            location = '#!/route/page/index';
+          }
         });
       });
     };

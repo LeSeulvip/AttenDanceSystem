@@ -35,5 +35,15 @@ public interface TbAdminService {
    */
   JsonMessage login(TbAdminModel model) throws Exception;
 
+  JsonMessage update(TbAdminModel model) throws Exception;
+
+  JsonMessage delete(TbAdminModel model) throws Exception;
+
+  JsonMessage add(TbAdminModel model) throws Exception;
+
+  JsonMessage queryByKey(TbAdminModel model) throws Exception;
+
+  JsonMessage queryAll(TbAdminModel model) throws Exception;
+
 
 }
